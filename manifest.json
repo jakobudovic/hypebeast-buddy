@@ -1,9 +1,35 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "version": "1.0",
     "name": "Hypebeast helper",
     "content_scripts": [{
         "matches": ["<all_urls>"],
         "js": ["main.js"]
-    }]
+    }],
+    "web_accessible_resources": [{
+        "resources": ["aa.jpg"],
+        "matches": ["<all_urls>"]
+    }],
+    "icons": {
+        "16": "sneaker1.png",
+        "48": "sneaker1.png",
+        "128": "sneaker1.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "32": "sneaker1.png",
+            "48": "hypebeast.png"
+        }
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": [
+        "tabs",
+        "*://*.google.com/"
+    ],
+    "host_permissions": ["https://*/"],
+    "action": {
+        "default_popup": "popup.html"
+    }
 }
