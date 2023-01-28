@@ -29,15 +29,10 @@ function waitForElm(selector) {
     });
 }
 
-waitForElm('.css-1ki54i').then((elm) => {
-    console.log('Element is ready');
-    console.log(elm);
-    run();
-});
 
-
-function run() {
-    const table = document.getElementsByClassName("css-1ki54i")[0];
+function get_table_data(selector) {
+    const table = document.querySelector(selector); // .css-1ki54i
+    // const table = document.querySelector(".css-1ki54i");
     const table_arr = Array.from(table.rows).slice(1); // remove header
     const arr_data = table_arr
                             .map(row => row.cells) 
@@ -46,11 +41,15 @@ function run() {
     console.log(arr_data);
 }
 
-window.addEventListener('load', function load(e){
-    window.removeEventListener('load', load, false);
-    console.log("running ...");
-    this.setTimeout(() => console.log("Script  loaded with timeout"), 2000)
-}, false);
+waitForElm('.css-1ki54i').then((elm) => {
+    get_table_data(".css-1ki54i");
+});
+
+// window.addEventListener('load', function load(e){
+//     window.removeEventListener('load', load, false);
+//     console.log("running ...");
+//     this.setTimeout(() => console.log("Script  loaded with timeout"), 2000)
+// }, false);
 
 
 // parent: .css-lno4gd
