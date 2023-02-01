@@ -32,15 +32,7 @@ function get_table_data(selector) {
     console.log(arr_data);
 }
 
-waitForElm('.css-1ki54i').then((elm) => {
-    console.log("found element!");
-    get_table_data(".css-1ki54i");
-});
-
-window.addEventListener('load', function load(e){
-    window.removeEventListener('load', load, false);
-    console.log("running ...");
-
+function insert_chart(selector) {
     var timeSeriesData = [
         { date: new Date("2022-01-01"), value: 100 },
         { date: new Date("2022-02-01"), value: 200 },
@@ -49,7 +41,7 @@ window.addEventListener('load', function load(e){
 
     var canvas = document.createElement("canvas");
     canvas.id = "myChartJS";
-    document.body.insertBefore(canvas, document.body.firstChild);
+    document.querySelector("#chakra-modal-11").insertBefore(canvas, document.querySelector(selector));
     var ctx = document.getElementById("myChartJS").getContext("2d");
 
     // Format the time series data for Chart.js
@@ -83,6 +75,19 @@ window.addEventListener('load', function load(e){
             },
         },
     });
+    console.log("arr_data");
+
+}
+
+waitForElm('.css-1ki54i').then((elm) => {
+    console.log("found element!");
+    get_table_data(".css-1ki54i");
+    insert_chart("#chakra-modal--body-11"); // insert before this
+});
+
+window.addEventListener('load', function load(e){
+    window.removeEventListener('load', load, false);
+    console.log("running ...");
 
     this.setTimeout(() => console.log("Function ran with timeout"), 2000)
 }, false);
