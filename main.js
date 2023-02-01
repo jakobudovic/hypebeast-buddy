@@ -1,12 +1,5 @@
 console.log("The extension is up and running");
 
-// var images = document.getElementsByTagName('img')
-
-// for (elt of images){
-//    elt.src = `${browser.runtime.getURL("aa.png")}`;
-//    elt.alt = 'an alt text'
-// }
-
 function waitForElm(selector) {
     return new Promise(resolve => {
         if (document.querySelector(selector)) {
@@ -54,14 +47,9 @@ window.addEventListener('load', function load(e){
         { date: new Date("2022-03-01"), value: 150 },
     ];
 
-    // Create the canvas element for the chart
     var canvas = document.createElement("canvas");
     canvas.id = "myChartJS";
-
-    // Add the canvas element as the first element in the body
     document.body.insertBefore(canvas, document.body.firstChild);
-
-    // Get the context for the chart
     var ctx = document.getElementById("myChartJS").getContext("2d");
 
     // Format the time series data for Chart.js
@@ -79,25 +67,21 @@ window.addEventListener('load', function load(e){
 
     // Create the chart
     var chart = new Chart(ctx, {
-    type: "line",
-    data: chartData,
-    options: {
-        scales: {
-        xAxes: [
-            {
-            type: "time",
-            distribution: "series",
+        type: "line",
+        data: chartData,
+        options: {
+            scales: {
+                xAxes: [{
+                    type: "time",
+                    distribution: "series",
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                    },
+                }],
             },
-        ],
-        yAxes: [
-            {
-            ticks: {
-                beginAtZero: true,
-            },
-            },
-        ],
         },
-    },
     });
 
     this.setTimeout(() => console.log("Function ran with timeout"), 2000)
