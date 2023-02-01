@@ -3,7 +3,7 @@
     "version": "1.0",
     "name": "Hypebeast helper",
     "content_scripts": [{
-        "matches": ["<all_urls>"],
+        "matches": ["https://stockx.com/*"],
         "js": ["chart.js", "main.js"]
     }],
     "web_accessible_resources": [{
