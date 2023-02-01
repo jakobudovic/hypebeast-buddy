@@ -4,7 +4,7 @@
     "name": "Hypebeast helper",
     "content_scripts": [{
         "matches": ["<all_urls>"],
-        "js": ["main.js"]
+        "js": ["chart.js", "main.js"]
     }],
     "web_accessible_resources": [{
         "resources": ["aa.jpg"],
@@ -20,9 +20,6 @@
             "32": "sneaker1.png",
             "48": "hypebeast.png"
         }
-    },
-    "background": {
-        "service_worker": "background.js"
     },
     "permissions": [
         "tabs",
