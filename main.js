@@ -78,7 +78,8 @@ function insert_chart(selector, timeSeriesData) {
                 time: {
                   displayFormats: {
                     'minute': 'd MMM, h:m a'
-                  }
+                  },
+                  tooltipFormat: "d MMM, H:mm a",
                 },
                 ticks: {
                   maxTicksLimit: 5,
