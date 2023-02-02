@@ -43,17 +43,22 @@ function insert_chart(selector, timeSeriesData) {
     console.log("timeSeriesData");
     console.log(timeSeriesData);
 
-    var canvas = document.createElement("canvas");
+    const parentDiv = document.createElement('div');
+    parentDiv.style.padding = '0px 24px';
+
+    const canvas = document.createElement('canvas');
     canvas.id = "myChartJS";
+    parentDiv.appendChild(canvas);
+
     // chakra-modal--body-27 or chakra-modal-11
-    document.querySelector("#chakra-modal-11").insertBefore(canvas, document.querySelector(selector));
+    document.querySelector("#chakra-modal-11").insertBefore(parentDiv, document.querySelector(selector));
     var ctx = document.getElementById("myChartJS").getContext("2d");
 
     // Format the time series data for Chart.js
     var chartData = {
         labels: timeSeriesData.map(item => new Date(`${item[0]} ${item[1]}`)),
         datasets: [{
-            label: "Value",
+            label: "Shoe price",
                 data: timeSeriesData.map(x => parseInt(x[3].slice(1))),
                 backgroundColor: "rgba(54, 162, 235, 0.2)",
                 borderColor: "rgba(54, 162, 235, 1)",
