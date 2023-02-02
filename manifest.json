@@ -4,7 +4,12 @@
     "name": "Hypebeast helper",
     "content_scripts": [{
         "matches": ["https://stockx.com/*"],
-        "js": ["chart.js", "all_sales.js", "main.js"]
+        "js": [
+            "chart.js",
+            "all_sales.js",
+            "datetime_adapter.js",
+            "main.js"
+        ]
     }],
     "web_accessible_resources": [{
         "resources": ["aa.jpg"],
