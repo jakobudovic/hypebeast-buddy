@@ -102,8 +102,15 @@ window.addEventListener('load', function load(e){
     window.removeEventListener('load', load, false);
     console.log("running ...");
 
-    this.setTimeout(() => console.log("Function ran with timeout"), 2000)
+    remove_cookie_product_visits("stockx_product_visits")
+    this.setTimeout(() => console.log("ran with delay"), 1000);
 }, false);
+
+
+function remove_cookie_product_visits(cookie_name) {
+    console.log("removing stockx_product_visits cookie ...");
+    document.cookie = `${cookie_name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+}
 
 
 // parent: .css-lno4gd
