@@ -20,8 +20,8 @@ function waitForElm(selector) {
     });
 }
 
-function get_table_data(selector) {
-    const table = document.querySelector(selector); // .css-1ki54i
+function get_table_data(table) {
+    // const table = document.querySelector(selector); // .css-1ki54i
     // const table = document.querySelector(".css-1ki54i");
     const table_arr = Array.from(table.rows).slice(1); // remove header
     const arr_data = table_arr
@@ -92,11 +92,31 @@ function insert_chart(selector, timeSeriesData) {
 
 }
 
-waitForElm('.css-1ki54i').then((elm) => {
-    console.log("found element!");
-    var data = get_table_data(".css-1ki54i");
-    insert_chart("#chakra-modal--body-11", data); // insert before this
+const targetNode = document.body;
+const observer = new MutationObserver((mutationsList) => {
+  for (const mutation of mutationsList) {
+    if (mutation.type === 'childList') {
+      for (const node of mutation.addedNodes) {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          const tableNodes = node.querySelectorAll('.css-1ki54i');
+          if (tableNodes.length) {
+            for (const tableNode of tableNodes) {
+                display_chart(tableNode);
+                return;
+            }
+          }
+        }
+      }
+    }
+  }
 });
+
+observer.observe(targetNode, { childList: true, subtree: true });
+
+function display_chart(table) {
+    var table_data = get_table_data(table);
+    insert_chart("#chakra-modal--body-11", table_data);
+}
 
 window.addEventListener('load', function load(e){
     window.removeEventListener('load', load, false);
