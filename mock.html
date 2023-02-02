@@ -38,7 +38,6 @@
 
       
 <script>
-
   const ctx = document.getElementById('myChart');
   var sale_dates = all_sales.map(item => new Date(`${item[0]} ${item[1]}`));
   // var sale_dates = all_sales.map(item => `${item[0]} ${item[1]}`);
@@ -48,16 +47,6 @@
     type: 'line',
     data: {
       labels: sale_dates,
-      // labels: sale_dates,
-
-      //   [
-      //       sale_dates[0],
-      //       sale_dates[Math.floor(sale_dates.length / 4)],
-      //       sale_dates[Math.floor(sale_dates.length / 2)],
-      //       sale_dates[Math.floor(sale_dates.length * 3 / 4)],
-      //       sale_dates[sale_dates.length - 1], 
-      // ],
-
       datasets: [{
         label: 'Shoe price',
         data: all_sales.map(x => parseInt(x[3].slice(1))),
@@ -65,19 +54,19 @@
       }]
     },
     options: {
-        scales: {
-          x: {
-                type: 'time',
-                time: {
-                    displayFormats: {
-                        'minute': 'd MMM, h:m a'
-                    }
-                },
-                ticks: {
-                    maxTicksLimit: 5,
-                },
+      scales: {
+        x: {
+          type: 'time',
+          time: {
+            displayFormats: {
+              'minute': 'd MMM, h:m a'
             }
+          },
+          ticks: {
+            maxTicksLimit: 5,
+          },
         }
+      }
     }
   });
 </script>
