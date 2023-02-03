@@ -85,7 +85,20 @@ function insert_chart(selector, timeSeriesData) {
                   maxTicksLimit: 5,
                 },
               }
-            }
+            },
+            plugins: {
+                tooltip: {
+                  callbacks: {
+                    label: function(tooltipItem) {
+                      return `${tooltipItem.dataset.label}: ${all_sales[tooltipItem.dataIndex][3]}`
+                    },
+                    footer: function(tooltipItems) {
+                      tooltipItem = tooltipItems[0];
+                      return `Size: ${all_sales[tooltipItem.dataIndex][2]}`
+                    }
+                  }
+                },
+              }
           }
     });
     console.log("arr_data");
