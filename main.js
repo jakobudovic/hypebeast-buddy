@@ -30,12 +30,19 @@ function get_table_data(table) {
                             .map(row => row.flatMap(cell => cell.innerText))
     console.log("arr_data");
     console.log(arr_data);
+
+    // asks & bids : Quantity, size, bid/ask price
+    // sales : date, time, size, sale price
     return arr_data
 }
 
 function insert_chart(selector, timeSeriesData) {
     console.log("timeSeriesData");
     console.log(timeSeriesData);
+
+    if (timeSeriesData[0].length < 4) {
+        return; //
+    }
 
     const parentDiv = document.createElement('div');
     parentDiv.style.padding = '0px 24px';
@@ -84,7 +91,7 @@ function insert_chart(selector, timeSeriesData) {
                     pointBorderWidth: 0.5, // less background at chart points
                 },
                 line: {
-                    tension: 0.2
+                    tension: 0.05
                 }
             },
             plugins: {
