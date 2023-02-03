@@ -39,41 +39,49 @@
       
 <script>
   const ctx = document.getElementById('myChart');
-  var customData = [
-    { x: 'Jan', y: 12, z: 'Value 1' },
-    { x: 'Feb', y: 19, z: 'Value 2' },
-    { x: 'Mar', y: 3, z: 'Value 3' },
-    { x: 'Apr', y: 5, z: 'Value 4' },
-    { x: 'May', y: 2, z: 'Value 5' },
-];
+  var sale_dates = all_sales.map(item => new Date(`${item[0]} ${item[1]}`));
+  // var sale_dates = all_sales.map(item => `${item[0]} ${item[1]}`);
+  // var sale_dates = all_sales.map(item => `${item[0]}`);
 
-var myChart = new Chart(ctx, {
+  new Chart(ctx, {
     type: 'line',
     data: {
-        labels: customData.map(d => d.x),
-        datasets: [{
-            label: "Shoe price",
-            data: customData.map(d => d.y),
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-        }]
+      labels: sale_dates,
+      datasets: [{
+        label: 'Shoe price',
+        data: all_sales.map(x => parseInt(x[3].slice(1))),
+        borderWidth: 3
+      }]
     },
     options: {
+      scales: {
+        x: {
+          type: 'time',
+          time: {
+            displayFormats: {
+              'minute': 'd MMM, h:m a'
+            },
+            tooltipFormat: "d MMM, H:mm a",
+          },
+          ticks: {
+            maxTicksLimit: 5,
+          },
+        }
+      },
       plugins: {
         tooltip: {
           callbacks: {
-            label: function(tooltipItem, data) {
-              return `${tooltipItem.dataset.label}: ${tooltipItem.dataset.data[tooltipItem.dataIndex]})`
+            label: function(tooltipItem) {
+              return `${tooltipItem.dataset.label}: ${all_sales[tooltipItem.dataIndex][3]}`
             },
             footer: function(tooltipItems) {
               tooltipItem = tooltipItems[0];
-              return `Size: ${customData[tooltipItem.dataIndex].z}`
+              return `Size: ${all_sales[tooltipItem.dataIndex][2]}`
             }
           }
         },
       }
     }
-});
-
+  });
 </script>
 </html>
