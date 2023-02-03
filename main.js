@@ -90,6 +90,9 @@ function insert_chart(selector, timeSeriesData) {
                 point: {
                     pointBorderWidth: 0.5,
                     // pointStyle: false
+                },
+                line: {
+                    tension: 0.2
                 }
             },
             plugins: {
