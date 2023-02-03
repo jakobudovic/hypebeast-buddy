@@ -59,10 +59,10 @@ function insert_chart(selector, timeSeriesData) {
         labels: timeSeriesData.map(item => new Date(`${item[0]} ${item[1]}`)),
         datasets: [{
             label: "Shoe price",
-                data: timeSeriesData.map(x => parseInt(x[3].slice(1))),
-                backgroundColor: "rgba(54, 162, 235, 0.2)",
-                borderColor: "rgba(54, 162, 235, 1)",
-                borderWidth: 1,
+            data: timeSeriesData.map(x => parseInt(x[3].slice(1))),
+            backgroundColor: "rgba(54, 162, 235, 0.2)",
+            borderColor: "rgba(54, 162, 235, 1)",
+            borderWidth: 3,
             },
         ],
     };
@@ -85,6 +85,12 @@ function insert_chart(selector, timeSeriesData) {
                   maxTicksLimit: 5,
                 },
               }
+            },
+            elements: {
+                point: {
+                    pointBorderWidth: 0.5,
+                    // pointStyle: false
+                }
             },
             plugins: {
                 tooltip: {
