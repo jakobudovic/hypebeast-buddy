@@ -99,11 +99,11 @@ function insert_chart(selector, timeSeriesData) {
                 tooltip: {
                   callbacks: {
                     label: function(tooltipItem) {
-                      return `${tooltipItem.dataset.label}: ${all_sales[tooltipItem.dataIndex][3]}`
+                      return `${tooltipItem.dataset.label}: ${timeSeriesData[tooltipItem.dataIndex][3]}`
                     },
                     footer: function(tooltipItems) {
                       tooltipItem = tooltipItems[0];
-                      return `Size: ${all_sales[tooltipItem.dataIndex][2]}`
+                      return `Size: ${timeSeriesData[tooltipItem.dataIndex][2]}`
                     }
                   }
                 },
