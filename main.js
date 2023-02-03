@@ -128,8 +128,8 @@ window.addEventListener('load', function load(e){
 
 
 function remove_cookie_product_visits(cookie_name) {
-    console.log("removing stockx_product_visits cookie ...");
-    document.cookie = `${cookie_name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    console.log("removing stockx_product_visits cookie ...")
+    document.cookie = `${cookie_name}=1; expires=Sun, 31 Dec 2033 12:00:00 UTC; path=/;`;
 }
 
 
