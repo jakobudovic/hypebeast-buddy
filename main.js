@@ -34,12 +34,6 @@ function get_table_data(table) {
 }
 
 function insert_chart(selector, timeSeriesData) {
-    // var timeSeriesData = [
-    //     { date: new Date("2022-01-01"), value: 100 },
-    //     { date: new Date("2022-02-01"), value: 200 },
-    //     { date: new Date("2022-03-01"), value: 150 },
-    // ];
-
     console.log("timeSeriesData");
     console.log(timeSeriesData);
 
@@ -67,7 +61,6 @@ function insert_chart(selector, timeSeriesData) {
         ],
     };
 
-    // Create the chart
     var chart = new Chart(ctx, {
         type: "line",
         data: chartData,
@@ -88,8 +81,7 @@ function insert_chart(selector, timeSeriesData) {
             },
             elements: {
                 point: {
-                    pointBorderWidth: 0.5,
-                    // pointStyle: false
+                    pointBorderWidth: 0.5, // less background at chart points
                 },
                 line: {
                     tension: 0.2
@@ -110,8 +102,15 @@ function insert_chart(selector, timeSeriesData) {
               }
           }
     });
-    console.log("arr_data");
+}
 
+function display_chart(table) {
+    var table_data = get_table_data(table);
+    insert_chart("#chakra-modal--body-11", table_data);
+}
+
+function remove_cookie_product_visits(cookie_name) {
+    document.cookie = `${cookie_name}=1; expires=Sun, 31 Dec 2033 12:00:00 UTC; path=/;`;
 }
 
 const targetNode = document.body;
@@ -135,24 +134,12 @@ const observer = new MutationObserver((mutationsList) => {
 
 observer.observe(targetNode, { childList: true, subtree: true });
 
-function display_chart(table) {
-    var table_data = get_table_data(table);
-    insert_chart("#chakra-modal--body-11", table_data);
-}
-
 window.addEventListener('load', function load(e){
     window.removeEventListener('load', load, false);
-    console.log("running ...");
-
     remove_cookie_product_visits("stockx_product_visits")
     this.setTimeout(() => console.log("ran with delay"), 1000);
 }, false);
 
-
-function remove_cookie_product_visits(cookie_name) {
-    console.log("removing stockx_product_visits cookie ...")
-    document.cookie = `${cookie_name}=1; expires=Sun, 31 Dec 2033 12:00:00 UTC; path=/;`;
-}
 
 
 // parent: .css-lno4gd
