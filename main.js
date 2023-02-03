@@ -1,25 +1,3 @@
-console.log("The extension is up and running");
-
-function waitForElm(selector) {
-    return new Promise(resolve => {
-        if (document.querySelector(selector)) {
-            return resolve(document.querySelector(selector));
-        }
-
-        const observer = new MutationObserver(mutations => {
-            if (document.querySelector(selector)) {
-                resolve(document.querySelector(selector));
-                observer.disconnect();
-            }
-        });
-
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
-        });
-    });
-}
-
 function get_table_data(table) {
     // const table = document.querySelector(selector); // .css-1ki54i
     // const table = document.querySelector(".css-1ki54i");
