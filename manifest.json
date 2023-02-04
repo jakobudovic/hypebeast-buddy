@@ -11,7 +11,7 @@
         ]
     }],
     "web_accessible_resources": [{
-        "resources": ["aa.jpg"],
+        "resources": [],
         "matches": ["<all_urls>"]
     }],
     "icons": {
@@ -21,8 +21,7 @@
     },
     "browser_action": {
         "default_icon": {
-            "32": "media/sneaker.png",
-            "48": "hypebeast.png"
+            "32": "media/sneaker.png"
         }
     },
     "permissions": [
