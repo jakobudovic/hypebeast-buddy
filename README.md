@@ -1,6 +1,6 @@
 # hypebeast-buddy
 
-A browser extension for an easier resselling experience.
+A browser extension for an easier resselling experience on [Stockx](https://stockx.com/) website.
 
 This tool inserts a graph of the latest sales for the shoe on top of the table with sales data.  
 It serves user for an easier understanding of the short-term shoe price trend.
