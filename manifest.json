@@ -16,13 +16,13 @@
         "matches": ["<all_urls>"]
     }],
     "icons": {
-        "16": "sneaker1.png",
-        "48": "sneaker1.png",
-        "128": "sneaker1.png"
+        "16": "sneaker.png",
+        "48": "sneaker.png",
+        "128": "sneaker.png"
     },
     "browser_action": {
         "default_icon": {
-            "32": "sneaker1.png",
+            "32": "sneaker.png",
             "48": "hypebeast.png"
         }
     },
