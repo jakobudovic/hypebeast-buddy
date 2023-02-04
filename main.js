@@ -8,9 +8,6 @@ function get_table_data(table) {
 }
 
 function insert_chart(selector, timeSeriesData) {
-  console.log("timeSeriesData");
-  console.log(timeSeriesData);
-
   if (timeSeriesData[0].length < 4) {
     return; // if "asks" or "bids" views open, skip chart insertion
   }
@@ -117,5 +114,4 @@ observer.observe(targetNode, {
 window.addEventListener('load', function load(e) {
   window.removeEventListener('load', load, false);
   remove_cookie_product_visits("stockx_product_visits")
-  this.setTimeout(() => console.log("ran with delay"), 1000);
 }, false);
