@@ -1,17 +1,10 @@
 function get_table_data(table) {
-    // const table = document.querySelector(selector); // .css-1ki54i
-    // const table = document.querySelector(".css-1ki54i");
-    const table_arr = Array.from(table.rows).slice(1); // remove header
-    const arr_data = table_arr
-                            .map(row => row.cells) 
-                            .map(row => Array.from(row))
-                            .map(row => row.flatMap(cell => cell.innerText))
-    console.log("arr_data");
-    console.log(arr_data);
-
-    // asks & bids : Quantity, size, bid/ask price
-    // sales : date, time, size, sale price
-    return arr_data
+  // asks & bids : Quantity, size, bid/ask price
+  // sales : date, time, size, sale price
+  const table_arr = Array.from(table.rows).slice(1); // remove header
+  return table_arr.map(row => row.cells) 
+                  .map(row => Array.from(row))
+                  .map(row => row.flatMap(cell => cell.innerText))
 }
 
 function insert_chart(selector, timeSeriesData) {
@@ -19,7 +12,7 @@ function insert_chart(selector, timeSeriesData) {
     console.log(timeSeriesData);
 
     if (timeSeriesData[0].length < 4) {
-        return; //
+        return; // if "asks" or "bids" views open, skip chart insertion
     }
 
     const parentDiv = document.createElement('div');
@@ -124,11 +117,3 @@ window.addEventListener('load', function load(e){
     remove_cookie_product_visits("stockx_product_visits")
     this.setTimeout(() => console.log("ran with delay"), 1000);
 }, false);
-
-
-
-// parent: .css-lno4gd
-// table: .css-1ki54i
-
-
-// children, childNodes, cells
