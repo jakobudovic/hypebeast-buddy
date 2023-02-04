@@ -5,9 +5,8 @@
     "content_scripts": [{
         "matches": ["https://stockx.com/*"],
         "js": [
-            "chart.js",
-            "all_sales.js",
-            "datetime_adapter.js",
+            "static/chart.js",
+            "static/datetime_adapter.js",
             "main.js"
         ]
     }],
@@ -16,13 +15,13 @@
         "matches": ["<all_urls>"]
     }],
     "icons": {
-        "16": "sneaker.png",
-        "48": "sneaker.png",
-        "128": "sneaker.png"
+        "16": "media/sneaker.png",
+        "48": "media/sneaker.png",
+        "128": "media/sneaker.png"
     },
     "browser_action": {
         "default_icon": {
-            "32": "sneaker.png",
+            "32": "media/sneaker.png",
             "48": "hypebeast.png"
         }
     },
